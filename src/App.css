@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Orbitron:wght@400..900&display=swap');
+@import "tailwindcss";
+
+:root {
+  --primary-color: #2534D7;
+  --secondary-color: #10b981;
+}
+
+.orb{
+    font-family: "Orbitron";
+}
+.geist{
+    font-family: "Geist";
+}
