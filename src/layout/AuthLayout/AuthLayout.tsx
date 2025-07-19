@@ -1,11 +1,10 @@
-import { useEffect, type ReactNode } from "react";
+import { useEffect,  } from "react";
 
 import "./Auth.css";
 import AOS from 'aos'
 import 'aos/dist/aos.css'
-type AuthLayoutProps = {
-  children: ReactNode;
-};
+
+
 
 const AuthLayout = ({ children }: AuthLayoutProps) => {
     useEffect(() => {

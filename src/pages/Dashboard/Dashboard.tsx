@@ -1,16 +1,12 @@
-import { motion } from "framer-motion";
-import Header from "../../components/Header";
 import { CiCalculator2 } from "react-icons/ci";
 import { LuCalendarDays } from "react-icons/lu";
 import { BsClock } from "react-icons/bs";
+import MainLayout from "../../layout/MainLayout/MainLayout";
+import { useNavigate } from "react-router-dom";
 const Dashboard = () => {
-  return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1, transition: { duration: 0.3 } }}
-      exit={{ opacity: 0 }}
-    >
-      <Header />
+   const navigate = useNavigate()
+    return (
+    <MainLayout>
       <div className="bg-[#f0f7ff] flex flex-col items-center h-auto py-4">
         <section className="h-76.5 w-10/12 flex flex-col justify-center items-center bg-white  rounded-[15px] shadow-md">
           <div className="w-33 rounded-full overflow-hidden">
@@ -58,7 +54,7 @@ const Dashboard = () => {
                     Total Marks:{" "}
                     <span className="text-[var(--primary-color)]">80</span>
                   </p>
-                  <button className="bg-[var(--primary-color)] text-white w-auto py-2 px-4 rounded-[5px]">
+                  <button onClick={() => navigate("/dashboard/exam-rules")} className="bg-[var(--primary-color)] text-white w-auto py-2 px-4 rounded-[5px]">
                     Starts In: 30mins
                   </button>
                 </div>
@@ -154,8 +150,8 @@ const Dashboard = () => {
                   </div>
                 </div>
                 <button className="bg-[#f0f7ff] border border-[#444] text-black w-30 py-2 rounded-[5px]">
-                    Take a Course 
-                  </button>
+                  Take a Course
+                </button>
               </div>
               <div className="flex justify-between items-center mt-4">
                 <div className="flex gap-6 items-center">
@@ -168,8 +164,8 @@ const Dashboard = () => {
                   </div>
                 </div>
                 <button className="bg-[#f0f7ff] border border-[#444] text-black w-30 py-2 rounded-[5px]">
-                    Take a Course 
-                  </button>
+                  Take a Course
+                </button>
               </div>
               <div className="flex justify-between items-center mt-4">
                 <div className="flex gap-6 items-center">
@@ -182,8 +178,8 @@ const Dashboard = () => {
                   </div>
                 </div>
                 <button className="bg-[#f0f7ff] border border-[#444] text-black w-30 py-2 rounded-[5px]">
-                    Take a Course 
-                  </button>
+                  Take a Course
+                </button>
               </div>
             </div>
             <div className=" mt-5 rounded-[15px] shadow-md bg-white h-[320px]  p-8.5">
@@ -199,8 +195,8 @@ const Dashboard = () => {
                   </div>
                 </div>
                 <button className="bg-[#f0f7ff] border border-[#444] text-black w-30 py-2 rounded-[5px]">
-                    Check Result
-                  </button>
+                  Check Result
+                </button>
               </div>
               <div className="flex justify-between items-center mt-4">
                 <div className="flex gap-6 items-center">
@@ -213,8 +209,8 @@ const Dashboard = () => {
                   </div>
                 </div>
                 <button className="bg-[#f0f7ff] border border-[#444] text-black w-30 py-2 rounded-[5px]">
-                    Check Result
-                  </button>
+                  Check Result
+                </button>
               </div>
               <div className="flex justify-between items-center mt-4">
                 <div className="flex gap-6 items-center">
@@ -227,15 +223,14 @@ const Dashboard = () => {
                   </div>
                 </div>
                 <button className="bg-[#f0f7ff] border border-[#444] text-black w-30 py-2 rounded-[5px]">
-                    Check Result
-                  </button>
+                  Check Result
+                </button>
               </div>
             </div>
-            
-            </div>
+          </div>
         </section>
       </div>
-    </motion.div>
+    </MainLayout>
   );
 };
 
