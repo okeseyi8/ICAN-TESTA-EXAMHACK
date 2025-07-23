@@ -4,18 +4,33 @@ import { BsClock } from "react-icons/bs";
 import MainLayout from "../../layout/MainLayout/MainLayout";
 import { useNavigate } from "react-router-dom";
 const Dashboard = () => {
-   const navigate = useNavigate()
-    return (
+  const navigate = useNavigate();
+  return (
     <MainLayout>
       <div className="bg-[#f0f7ff] flex flex-col items-center h-auto py-4">
-        <section className="h-76.5 w-10/12 flex flex-col justify-center items-center bg-white  rounded-[15px] shadow-md">
-          <div className="w-33 rounded-full overflow-hidden">
-            <img src="/images/icanprofile.png" />
+        <section className="h-76.5 w-10/12  bg-white py-6  px-15 rounded-[15px] shadow-md">
+          <div className="flex gap-7 ">
+            <div className="">
+              <img
+                className="w-19  rounded-full overflow-hidden"
+                src="/images/icanprofile.png"
+              />
+            </div>
+            <div>
+              <h1 className="font-bold text-3xl ">
+                Welcome back, Adeyemi David
+              </h1>
+              <h3 className="text-[16px] mt-2">ICAN 5678</h3>
+            </div> 
           </div>
-          <h1 className="font-bold text-3xl mt-2">
-            Welcome back, Adeyemi David
-          </h1>
-          <h3 className="text-[20px] mt-2">Welcome to your Dashboard</h3>
+          <div className="w-full flex mt-15.5 justify-between">
+            <h2 className="font-bold text-[28px]">Professional</h2>
+            <p className="text-xl h-6.5 font-medium text-[#736B6B] bg-[#D9D9D9] flex items-center px-1.5 rounded-[15px] z-0">75% Completed</p>
+          </div>
+          <div className=" relative w-full bg-[#DEEDFF] h-5 rounded-[50px] mt-3">
+            <div className="absolute top-0 left-0 w-7/10 h-5 rounded-[50px] bg-[#2534D7] z-10"></div>
+            
+          </div>
         </section>
         <section className="w-10/12 flex mt-5 gap-5 ">
           <div className="w-7/12 flex flex-col gap-5 ">
@@ -54,7 +69,10 @@ const Dashboard = () => {
                     Total Marks:{" "}
                     <span className="text-[var(--primary-color)]">80</span>
                   </p>
-                  <button onClick={() => navigate("/dashboard/exam-rules")} className="bg-[var(--primary-color)] text-white w-auto py-2 px-4 rounded-[5px]">
+                  <button
+                    onClick={() => navigate("/dashboard/exam-rules")}
+                    className="bg-[var(--primary-color)] text-white w-auto py-2 px-4 rounded-[5px]"
+                  >
                     Starts In: 30mins
                   </button>
                 </div>

@@ -23,5 +23,5 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true
   },
-  "include": ["src", "tailwind.config.ts", "types.d.ts"]
+  "include": ["src", "tailwind.config.ts", "src/types.d.ts", "types.d.ts", "src/types"]
 }
