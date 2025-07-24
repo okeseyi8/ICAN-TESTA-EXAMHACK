@@ -6,7 +6,7 @@ import 'aos/dist/aos.css'
 
 
 
-const AuthLayout = ({ children }: AuthLayoutProps) => {
+const AuthLayout = ({ children }: LayoutProps) => {
     useEffect(() => {
     AOS.init({
            

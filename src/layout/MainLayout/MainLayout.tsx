@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 
 
-const MainLayout = ({children}: AuthLayoutProps) => {
+const MainLayout = ({children}: LayoutProps) => {
   return (
     <motion.div
       initial={{ opacity: 0 }}

@@ -1,6 +1,6 @@
 import { type ReactNode } from "react";
 declare global {
-  type AuthLayoutProps = {
+  type LayoutProps = {
     children: ReactNode;
   };
 
@@ -11,6 +11,12 @@ declare global {
     email: string;
     phoneNumber: number;
   };
+  type Answer = {
+  questionId: number;
+  selectedOption: string; 
+  flagged?: boolean;
+  visited?: boolean;
+};
 }
 
 
