@@ -1,7 +1,9 @@
 // import React from 'react'
 import { RiHome5Line } from "react-icons/ri";
 import { NavLink } from "react-router-dom";
-
+import { FaQuestion } from "react-icons/fa6";
+import Cam from "../../assets/icons/cam.svg?react"
+import Star from "../../assets/icons/star.svg?react"
 const Sidebar = () => {
   const getNavClasses = ({ isActive }: { isActive: boolean }) =>
     `w-full flex items-center gap-6 py-3 px-2.5 font-bold text-xl rounded-l-xl ${
@@ -26,19 +28,19 @@ const Sidebar = () => {
           </li>
           <li>
             <NavLink to="/admin/questions" className={getNavClasses}>
-              <RiHome5Line />
+              <FaQuestion />
               <span>Set Questions</span>
             </NavLink>
           </li>
           <li>
             <NavLink to="/admin/live-monitoring" className={getNavClasses}>
-              <RiHome5Line />
+              <Cam />
               <span>Live Monitoring</span>
             </NavLink>
           </li>
           <li>
             <NavLink to="/admin/review-submissions" className={getNavClasses}>
-              <RiHome5Line />
+              <Star />
               <span>Review Submissions</span>
             </NavLink>
           </li>
