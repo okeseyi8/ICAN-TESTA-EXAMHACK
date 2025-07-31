@@ -4,13 +4,18 @@ import { NavLink } from "react-router-dom";
 import { FaQuestion } from "react-icons/fa6";
 import Cam from "../../assets/icons/cam.svg?react"
 import Star from "../../assets/icons/star.svg?react"
+
+
+
 const Sidebar = () => {
+  
   const getNavClasses = ({ isActive }: { isActive: boolean }) =>
     `w-full flex items-center gap-6 py-3 px-2.5 font-bold text-xl rounded-l-xl ${
       isActive
         ? "bg-[#91B5FF80] text-[#3366CC]"
         : "text-black hover:bg-[#f2f2f2]"
     }`;
+ 
 
   return (
     <div className="w-full h-screen py-15 pl-[50px] shadow-sm bg-white">
@@ -23,7 +28,7 @@ const Sidebar = () => {
           <li>
             <NavLink to="/admin" end className={getNavClasses}>
               <RiHome5Line />
-              <span>Dashboard</span>
+              <span >Dashboard</span>
             </NavLink>
           </li>
           <li>

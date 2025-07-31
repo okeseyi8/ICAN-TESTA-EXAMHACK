@@ -5,8 +5,11 @@ declare global {
   };
 
   type SignUp = {
-    name: string;
+    first_name: string;
+    last_name: string;
     password: string;
+    confirmPassword: string;
+
     icanNumber: string;
     email: string;
     phoneNumber: number;
@@ -17,6 +20,10 @@ declare global {
   flagged?: boolean;
   visited?: boolean;
 };
+type loginPayload = {
+  email: string;
+  password:string
+}
 }
 
 

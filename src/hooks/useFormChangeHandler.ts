@@ -1,7 +1,8 @@
 import { useState } from "react";
+// import { useState } from 'react';
 
-const useFormChangeHandler = ():[Record<string, any>, (e: React.ChangeEvent<HTMLInputElement>) => void] => {
-  const [formDetails, setFormDetails] = useState<Record<string, any>>({});
+function useFormChangeHandler<T extends Record<string, any>>(initialState: T): [T, (e: React.ChangeEvent<HTMLInputElement>) => void] {
+  const [formDetails, setFormDetails] = useState<T>(initialState);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -12,6 +13,7 @@ const useFormChangeHandler = ():[Record<string, any>, (e: React.ChangeEvent<HTML
   };
 
   return [formDetails, handleChange];
-};
+}
 
 export default useFormChangeHandler;
+

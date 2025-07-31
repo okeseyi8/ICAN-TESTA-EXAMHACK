@@ -14,6 +14,7 @@ const Dashboard = () => {
               <img
                 className="w-19  rounded-full overflow-hidden"
                 src="/images/icanprofile.png"
+                loading="lazy"
               />
             </div>
             <div>

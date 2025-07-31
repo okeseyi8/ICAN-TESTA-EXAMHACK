@@ -19,21 +19,21 @@ const ExamInstructions = () => {
           <p className="text-xl"></p>
         </div>
         <div className="w-9/10 mt-8 bg-white mb-9 flex flex-col p-7.5 mx-12 rounded-3xl shadow-md">
-          <h3 className="font-bold text-6xl">Exam Instructions</h3>
-          <p className="text-[#444] text-3xl my-3">
+          <h3 className="font-bold text-[40px]">Exam Instructions</h3>
+          <p className="text-[#444] text-xl my-1">
             Please read the following instructions carefully before you begin.
           </p>
           <div className="w-full flex justify-between">
-            <div className="w-3/10 text-2xl gap-5 h-26 rounded-[15px] flex items-center px-4.5 bg-[#C4D5FA]">
+            <div className="w-3/10 text-xl gap-5 h-26 rounded-[15px] flex items-center px-4.5 bg-[#C4D5FA]">
               <Icanimg className="text-[#2534D7]" />
 
               <p>10 Exam Questions</p>
             </div>
-            <div className="w-3/10 text-2xl gap-5 h-26 rounded-[15px] flex items-center px-4.5 bg-[#C4D5FA]">
+            <div className="w-3/10 text-xl gap-5 h-26 rounded-[15px] flex items-center px-4.5 bg-[#C4D5FA]">
               <HiClock className="text-[#2534D7]" />
               <p>45 Minutes Duration</p>
             </div>
-            <div className="w-3/10 text-2xl gap-5 h-26 rounded-[15px] flex items-center px-4.5 bg-[#C4D5FA]">
+            <div className="w-3/10 text-xl gap-5 h-26 rounded-[15px] flex items-center px-4.5 bg-[#C4D5FA]">
               <Aiimg className="text-[#2534D7] text-2xl" />
               <p>AI Proctoring Enabled</p>
             </div>
