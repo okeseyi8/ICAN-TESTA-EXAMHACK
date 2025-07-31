@@ -144,7 +144,7 @@ useAntiCheat({
   }
 });
 
-  // useAntiCheat({ onViolation: handleViolation });
+  
   const progress = (answers.length / questions.length) * 100;
   const handleSelectAnswer = (questionId: number, selectedOption: string) => {
     setAnswers((prev) => {
@@ -207,10 +207,10 @@ useAntiCheat({
       <div className="quesNav w-full my-4">
         <div className="quesNav w-full my-4">
           <div>
-            <ul className="flex gap-4">
+            <ul className="w-full flex flex-wrap gap-4">
               {questions.map((q, index) => {
                 const isCurrent = index === currentIndex;
-                const isAnswered = answers.some((a) => a.questionId === q.id);
+                const isAnswered = answers?.some((a) => a.questionId === q.id);
 
                 let bgClass = "bg-white";
                 if (isAnswered) {

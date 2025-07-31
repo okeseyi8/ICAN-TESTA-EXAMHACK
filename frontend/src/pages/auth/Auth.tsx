@@ -8,7 +8,12 @@ import UserSignup from "./UserSignup";
 import UploadForm from "./UploadForm";
 import { useSwitchStore } from "../../store/useSwitchStore";
 import { PasswordForm } from "./PasswordForm";
+import { useEffect } from "react";
+import { useAuthStore } from "../../store/AuthStore";
+import { useNavigate } from "react-router-dom";
+useNavigate;
 const Auth = () => {
+  const navigate = useNavigate();
   const {
     isLogin,
     showLogin,
@@ -30,6 +35,16 @@ const Auth = () => {
       backToPasswordStep: s.backToPasswordStep,
     }))
   );
+ const user = useAuthStore((s) => s.user);
+
+  useEffect(() => {
+    if (user){
+      navigate("/dashboard")
+    }else(
+      navigate("/")
+    )
+
+  }, [])
 
   return (
     <AuthLayout>

@@ -8,17 +8,31 @@ import { HiXCircle } from "react-icons/hi2";
 import useFormChangeHandler from "../../hooks/useFormChangeHandler";
 import { useSwitchStore } from "../../store/useSwitchStore";
 import { useShallow } from "zustand/shallow";
+import { useAuthStore } from "../../store/AuthStore";
+import Loader from "../../components/Loader";
 export const PasswordForm = () => {
   const {goToUploadStep} = useSwitchStore(useShallow((s) => ({
     goToUploadStep: s.goToUploadStep
   })))
-  const [passwordForm, handleFormChange] = useFormChangeHandler({
-    password: "", 
-    confirmPassword: ""
 
-  });
+  const signDetails = JSON.parse(localStorage.getItem("signUpDetails") ?? "null") || null
+  
+  const [completeSignUpDetails, handleCompleteDetails] = useFormChangeHandler(signDetails)  
   const [isConfirmPassword, toggleConfirmedPassword] = useToggle();
   const [isPasswordVisible, togglePassword] = useToggle();
+  console.log("hi", signDetails, completeSignUpDetails)
+  const register = useAuthStore((s) =>  s.register)
+  const registerLoading = useAuthStore((s) => s.registerLoading)
+  const handleRegister = async () => {
+  try {
+    await register(completeSignUpDetails);
+    goToUploadStep(); 
+  } catch (error) {
+    console.error("Registration failed:", error);
+  
+  }
+};
+
   return (
     <>
       <form className="pt-8 flex flex-col gap-6.5">
@@ -28,7 +42,7 @@ export const PasswordForm = () => {
             <input
               id="create"
               name="password"
-              onChange={handleFormChange}
+              onChange={handleCompleteDetails}
               placeholder="*****************"
               className="w-full border p-4 mt-2 border-[#DADADA] rounded-sm"
               type={isPasswordVisible ? "text" : "password"}
@@ -55,7 +69,8 @@ export const PasswordForm = () => {
             <input
               placeholder="*****************"
               className="w-full border p-4 mt-2 border-[#DADADA] rounded-sm"
-              name="confirmPassword"
+              name="confirm_password"
+              onChange={handleCompleteDetails}
               type={isConfirmPassword ? "text" : "password"}
             />
             <button
@@ -75,7 +90,7 @@ export const PasswordForm = () => {
         </div>
         <motion.div layout>
           <AnimatePresence>
-            {passwordForm?.password && (
+            {completeSignUpDetails?.password && (
               <motion.div
                 key="password-requirements"
                 initial={{ opacity: 0, height: 0 }}
@@ -92,13 +107,13 @@ export const PasswordForm = () => {
                 <div className="flex items-center gap-3 text-[#736B6B]">
                   <div className="flex justify-center items-center w-5 h-5 border border-[#DADADA] rounded-full">
                     <motion.div
-                      key={passwordForm.password.length >= 8 ? "check" : "x"}
+                      key={completeSignUpDetails.password.length >= 8 ? "check" : "x"}
                       initial={{ opacity: 0, scale: 0.8 }}
                       animate={{ opacity: 1, scale: 1 }}
                       exit={{ opacity: 0, scale: 0.8 }}
                       transition={{ duration: 0.2 }}
                     >
-                      {passwordForm.password.length >= 8 ? (
+                      {completeSignUpDetails.password.length >= 8 ? (
                         <FaCircleCheck className="text-[#2534D7]" />
                       ) : (
                         <HiXCircle className="text-[22px] text-red-600" />
@@ -110,13 +125,13 @@ export const PasswordForm = () => {
                 <div className="flex items-center gap-3 text-[#736B6B]">
                   <div className=" flex justify-center items-center w-5 h-5 border border-[#DADADA] rounded-full">
                     <motion.div
-                      key={/[A-Z]/.test(passwordForm.password) ? "check" : "x"}
+                      key={/[A-Z]/.test(completeSignUpDetails.password) ? "check" : "x"}
                       initial={{ opacity: 0, scale: 0.8 }}
                       animate={{ opacity: 1, scale: 1 }}
                       exit={{ opacity: 0, scale: 0.8 }}
                       transition={{ duration: 0.2 }}
                     >
-                      {/[A-Z]/.test(passwordForm.password) ? (
+                      {/[A-Z]/.test(completeSignUpDetails.password) ? (
                         <FaCircleCheck className="text-[#2534D7]" />
                       ) : (
                         <HiXCircle className="text-[22px] text-red-600" />
@@ -130,7 +145,7 @@ export const PasswordForm = () => {
                     <motion.div
                       key={
                         /[!@#$%^&*(),.?":{}|<>_\-\\[\]]/.test(
-                          passwordForm.password
+                          completeSignUpDetails.password
                         )
                           ? "check"
                           : "x"
@@ -141,7 +156,7 @@ export const PasswordForm = () => {
                       transition={{ duration: 0.2 }}
                     >
                       {/[!@#$%^&*(),.?":{}|<>_\-\\[\]]/.test(
-                        passwordForm.password
+                        completeSignUpDetails.password
                       ) ? (
                         <FaCircleCheck className="text-[#2534D7]" />
                       ) : (
@@ -159,11 +174,12 @@ export const PasswordForm = () => {
               type="button"
               onClick={(e) => {
                 e.preventDefault();
-                goToUploadStep();
+                handleRegister()
               }}
-              className="cursor-pointer font-medium w-5/12 bg-[var(--primary-color)] text-white py-2 rounded-md"
+              className="cursor-pointer flex justify-center h-10 font-medium w-5/12 bg-[var(--primary-color)] text-white py-2 rounded-md"
             >
-              Next
+              {registerLoading ? <Loader /> : "Next"}
+             
             </button>
           </div>
         </motion.div>

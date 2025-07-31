@@ -8,11 +8,11 @@ declare global {
     first_name: string;
     last_name: string;
     password: string;
-    confirmPassword: string;
+    confirm_password: string;
 
-    icanNumber: string;
+    ican_number: string;
     email: string;
-    phoneNumber: number;
+    phone_number: Number;
   };
   type Answer = {
   questionId: number;
@@ -23,6 +23,10 @@ declare global {
 type loginPayload = {
   email: string;
   password:string
+}
+type updateUserPayload = {
+  avatar_url: string;
+  phone_number?: string;
 }
 }
 

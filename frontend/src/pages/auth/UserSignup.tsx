@@ -1,28 +1,61 @@
-
-
+import useFormChangeHandler from "../../hooks/useFormChangeHandler";
+// import { useAuthStore } from "../../store/AuthStore";
 import { useSwitchStore } from "../../store/useSwitchStore";
 import { useShallow } from "zustand/shallow";
+
 const UserSignup = () => {
-  const { goToPasswordStep } = useSwitchStore(
+  const { goToPasswordStep,  } = useSwitchStore(
     useShallow((s) => ({
       goToPasswordStep: s.goToPasswordStep,
+     
+
     }))
   );
+  // const register = useAuthStore((s) =>  s.register)
+  const [signUpDetails, handleSignUpChange] = useFormChangeHandler<SignUp>({
+    first_name: "",
+    last_name: "",
+    password: "",
+    confirm_password: "",
+
+    ican_number: "",
+    email: "",
+    phone_number: 0,
+    
+  });
   return (
     <>
       <form className="pt-[45px] flex flex-col gap-6.5">
-        <div>
-          <label htmlFor="FullName">Full Name</label>
-          <input
-            placeholder="Enter your name"
-            className="w-full border p-4 mt-2 border-[#DADADA] rounded-sm"
-            type="text"
-          />
+        <div className="w-full flex gap-2.5">
+          <div className="w-[50%]">
+            <label htmlFor="FullName">First Name</label>
+            <input
+              name="first_name"
+           
+              onChange={handleSignUpChange}
+             
+              placeholder="Enter your name"
+              className="w-full border p-4 mt-2 border-[#DADADA] rounded-sm"
+              type="text"
+            />
+          </div>
+          <div className="w-[50%]">
+            <label htmlFor="FullName">Last Name</label>
+            <input
+              name="last_name"
+             onChange={handleSignUpChange}
+              placeholder="Enter your name"
+              className="w-full border p-4 mt-2 border-[#DADADA] rounded-sm"
+              type="text"
+            />
+          </div>
         </div>
         <div>
           <label htmlFor="ICAN">ICAN Number</label>
           <input
+            onChange={handleSignUpChange}
             placeholder="ICAN No."
+            name="ican_number"
             className="w-full border p-4 mt-2 border-[#DADADA] rounded-sm"
             type="text"
           />
@@ -30,7 +63,9 @@ const UserSignup = () => {
         <div>
           <label htmlFor="Email">Email</label>
           <input
+            onChange={handleSignUpChange}
             placeholder="Email"
+            name="email"
             className="w-full border p-4 mt-2 border-[#DADADA] rounded-sm"
             type="text"
           />
@@ -38,16 +73,11 @@ const UserSignup = () => {
         <div>
           <label htmlFor="Phone">Phone Number</label>
           <input
+            onChange={handleSignUpChange}
             placeholder="Phone"
+            name="phone_number"
             className="w-full border p-4 mt-2 border-[#DADADA] rounded-sm"
             type="text"
-          />
-        </div>
-        <div>
-          <label htmlFor="Date">Date</label>
-          <input
-            className="w-full border p-4 mt-2 border-[#DADADA] rounded-sm"
-            type="date"
           />
         </div>
       </form>
@@ -63,7 +93,14 @@ const UserSignup = () => {
       <div className="w-full flex justify-center mt-15">
         <button
           type="button"
-          onClick={() => goToPasswordStep()}
+          onClick={() => 
+            {
+               localStorage.setItem("signUpDetails", JSON.stringify(signUpDetails))
+               goToPasswordStep();
+             
+
+
+            }}
           className="cursor-pointer font-medium w-5/12 bg-[var(--primary-color)] text-white py-2 rounded-md"
         >
           Next

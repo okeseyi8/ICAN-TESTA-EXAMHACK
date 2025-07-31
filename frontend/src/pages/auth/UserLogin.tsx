@@ -1,13 +1,22 @@
 import useFormChangeHandler from "../../hooks/useFormChangeHandler";
 import { useShallow } from "zustand/shallow";
 import { useAuthStore } from "../../store/AuthStore";
+
+import Loader from "../../components/Loader";
+import { useNavigate } from "react-router-dom";
 const UserLogin = () => {
-  const { login } = useAuthStore(
+  const { login, loginLoading } = useAuthStore(
     useShallow((s) => ({
       login: s.login,
+      loginLoading: s.loginLoading
     }))
   );
+  const navigate = useNavigate()
+  const loginFunct = async() => {
+    await login(loginDetails)
+    navigate('/dashboard')
 
+  }
   const [loginDetails, handleLoginChange] = useFormChangeHandler<loginPayload>({
     email: "",
     password: "",
@@ -37,21 +46,26 @@ const UserLogin = () => {
         </div>
       </form>
       <div className="w-full flex mt-9 justify-between">
-        <div>Remember Me</div>
+        <div className="flex gap-2.5">
+          <input type="checkbox" />
+          Remember Me</div>
         <p className="font-medium text-[16px] text-[var(--primary-color)]">
           Forgot Password?
         </p>
       </div>
       <div className="w-full flex justify-center mt-15">
+
         <button
           onClick={() => {
             // navigate("/dashboard");
-            login(loginDetails);
+            // login(loginDetails);
+            loginFunct()
             console.log("Login Payload:", loginDetails, import.meta.env);
           }}
-          className="font-medium w-5/12 bg-[var(--primary-color)] text-white py-2 rounded-md"
+          className=" flex justify-center h-10 items-center cursor-pointer font-medium w-5/12 bg-[var(--primary-color)] text-white py-2 rounded-md"
         >
-          Login
+          {loginLoading ? <Loader /> : "Login"}
+       
         </button>
       </div>
     </>
